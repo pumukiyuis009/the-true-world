@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>THE TRUE WORLD</title>
-<link rel="stylesheet" href="css/styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron&family=Cinzel&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
 
 <canvas id="particles"></canvas>
 
 <header class="navbar">
+  <nav>
     <div class="logo glow">THE TRUE WORLD</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="publish.html">Publish</a>
-        <a href="profile.html">Profile</a>
-        <a href="login.html" class="void-btn">Enter the Void</a>
-    </nav>
+    <input type="text" id="search" placeholder="Search theories..." />
+    <button class="void-btn" onclick="showLogin()">Enter the Void</button>
+  </nav>
 </header>
 
-<section class="hero">
-    <h1>Some questions have no answers... <span class="glitch">yet</span></h1>
-    <p>Explore the theories the world prefers to ignore.</p>
-    <a href="publish.html" class="cta">Share Your Theory</a>
-</section>
+<main class="container">
 
-<section class="daily">
-    <h2>Daily Transmission</h2>
-    <div id="dailyAI" class="glass"></div>
-</section>
+  <section id="hero" class="glass">
+    <h1 class="hero-title">Some questions have no answers... yet</h1>
+    <p class="hero-subtitle typewriter" id="typewriter-text"></p>
+    <button onclick="scrollToPost()" class="cta-btn">Share Your Theory</button>
+    <div id="hero-symbol" title="Mystery Symbol">&#128064;</div>
+  </section>
 
-<section class="featured">
+  <section id="daily-theory" class="glass">
+    <h2>Daily AI Theory</h2>
+    <p id="dailyAI">Loading...</p>
+  </section>
+
+  <section id="featured" class="glass">
     <h2>Trending Theories</h2>
     <div id="featuredContainer" class="card-grid"></div>
-</section>
+  </section>
 
-<footer>
-    <p>The truth is out there... or perhaps within.</p>
-    <small>© 2026 THE TRUE WORLD</small>
-</footer>
+  <section id="categories" class="glass">
+    <h2>What keeps you awake?</h2>
+    <div class="categories-grid">
+      <div class="category" data-category="Paranormal" style="--accent:#00d4ff;">🔮 Paranormal & Dimensions</div>
+      <div class="category" data-category="Consciousness" style="--accent:#00ff88;">🧠 Consciousness & Mind</div>
+      <div class="category" data-category="Cosmic" style="--accent:#9d00ff;">🪐 Universe & Cosmic</div>
+      <div class="category" data-category="Conspiracies" style="--accent:#00d4ff;">🗝️ Conspiracies & Secrets</div>
+      <div class="category" data-category="Science" style="--accent:#00ff88;">🔬 Science Beyond</div>
+      <div class="category" data-category="Philosophy" style="--accent:#9d00ff;">📜 Alternative Philosophy</div>
+      <div class="category" data-category="Unexplained" style="--accent:#00d4ff;">👁️ Unexplained Phenomena</div>
+      <div class="category" data-category="Parallel" style="--accent:#00ff88;">🌌 Parallel Realities</div>
+    </div>
+  </section>
+
+  <section id="post-theory" class="glass" style="display:none;">
+    <h2>Add Your Voice to the Silence</h2>
+    <form id="theoryForm">
+      <input type="text" name="title" placeholder="Theory Title" maxlength="100" required />
+      <select name="category" required>
+        <option value="" disabled selected>Choose Category</option>
+        <option value="Paranormal">🔮 Paranormal & Dimensions</option>
+        <option value="Consciousness">🧠 Consciousness & Mind</option>
+        <option value="Cosmic">🪐 Universe & Cosmic</option>
+        <option value="Conspiracies">🗝️ Conspiracies & Secrets</option>
+        <option value="Science">🔬 Science Beyond</option>
+        <option value="Philosophy">📜 Alternative Philosophy</option>
+        <option value="Unexplained">👁️ Unexplained Phenomena</option>
+        <option value="Parallel">🌌 Parallel Realities</option>
+      </select>
+      <textarea name="content" placeholder="Your Theory..." rows="6" required></textarea>
+      <label><input type="checkbox" name="anonymous" /> Post anonymously</label>
+      <button type="submit">Publish Theory</button>
+    </form>
+  </section>
+
+  <section id="theory-feed" class="glass">
+    <h2>Latest Theories</h2>
+    <div id="theoryFeed" class="card-grid"></div>
+    <button id="loadMoreBtn">Load More</button>
+  </section>
+
+</main>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content glass">
+    <span class="close" onclick="hideLogin()">&times;</span>
+    <h2>Enter the Void</h2>
+    <input type="text" id="username" placeholder="Enter your username" />
+    <button onclick="login()">Enter</button>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
