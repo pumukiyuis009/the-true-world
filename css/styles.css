@@ -83,3 +83,49 @@ animation:glitch 1s infinite;
 50%{text-shadow:-2px -2px #00ff88;}
 100%{text-shadow:2px 2px #9d00ff;}
 }
+.profile-container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.profile-card{
+width:400px;
+padding:40px;
+text-align:center;
+border:1px solid rgba(0,212,255,0.3);
+backdrop-filter:blur(12px);
+}
+
+.avatar{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #00d4ff;
+box-shadow:0 0 15px #00d4ff;
+margin-bottom:15px;
+}
+
+.stats{
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+}
+
+.stats div{
+text-align:center;
+}
+
+.stats span{
+font-size:22px;
+color:#00d4ff;
+font-weight:bold;
+}
+
+.policy{
+font-size:12px;
+color:#a0a0a0;
+margin-top:5px;
+}
