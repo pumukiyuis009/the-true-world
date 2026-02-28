@@ -341,3 +341,120 @@ form button {
 }
 .profile-stats div {
   text-align: center;
+}
+.profile-stats div p {
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.85);
+}
+.modal-content {
+  background: rgba(10, 10, 10, 0.9);
+  margin: 15% auto;
+  padding: 30px 25px;
+  border: 1px solid #00d4ff99;
+  width: 320px;
+  border-radius: 15px;
+  color: #e0e0e0;
+  position: relative;
+  box-shadow: 0 0 35px #00d4ffcc;
+}
+.modal-content h2 {
+  margin-bottom: 15px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: #9d00ff;
+  text-shadow: 0 0 15px #9d00ffbb;
+}
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #00d4ffcc;
+  background: #121212;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+}
+.modal-content button {
+  width: 100%;
+  background: #9d00ff;
+  color: #e0e0e0;
+  font-weight: 700;
+  padding: 12px 0;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 0 15px #9d00ffcc;
+  transition: 0.3s ease;
+}
+.modal-content button:hover {
+  background: #6a00cc;
+  box-shadow: 0 0 30px #9d00ffcc;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #9d00ff;
+  user-select: none;
+}
+
+/* COMMENTS */
+.comments-section {
+  margin-top: 20px;
+}
+.comment {
+  background: rgba(0, 212, 255, 0.08);
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+.comment strong {
+  color: #00d4ff;
+}
+.comment .timestamp {
+  font-size: 0.75rem;
+  color: #66aaffaa;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* LOAD MORE BUTTON */
+#loadMoreBtn {
+  margin: 15px auto 40px auto;
+  display: block;
+  background: #9d00ff;
+  width: 140px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .navbar nav {
+    flex-wrap: wrap;
+  }
+  .navbar input[type="text"] {
+    flex-grow: 1;
+    margin-bottom: 10px;
+  }
+  .profile-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
