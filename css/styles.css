@@ -1,460 +1,96 @@
-/* Reset + basics */
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #e0e0e0;
-  overflow-x: hidden;
-  position: relative;
-  z-index: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a {
-  color: #00d4ff;
-  text-decoration: none;
-}
-h1, h2, h3, h4 {
-  font-family: 'Cinzel', serif;
-  margin: 0 0 10px 0;
-  letter-spacing: 0.06em;
-  color: #9d00ff;
-  text-shadow: 0 0 8px #9d00ff80;
-}
-p, label, input, textarea, select {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #e0e0e0;
-}
-button {
-  cursor: pointer;
-  border: none;
-  background: #00d4ff;
-  color: #0a0a0a;
-  font-weight: 700;
-  padding: 12px 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px #00d4ff80;
-  transition: 0.3s ease;
-}
-button:hover {
-  box-shadow: 0 0 25px #00d4ff;
-  transform: scale(1.05);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE TRUE WORLD</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* PARTICLES CANVAS */
-#particles {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: -1000;
-  background: #0a0a0a;
-}
+<canvas id="particles"></canvas>
 
-/* HEADER NAV */
-.navbar {
-  background: rgba(0,0,0,0.7);
-  border-bottom: 1px solid #00d4ff33;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-.navbar nav {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  gap: 20px;
-}
-.navbar .logo {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: #00d4ff;
-  text-shadow: 0 0 12px #00d4ffaa;
-  cursor: default;
-  user-select: none;
-  flex-grow: 1;
-}
-.navbar input[type="text"] {
-  flex-grow: 3;
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: none;
-  background: #121212;
-  color: #e0e0e0;
-  box-shadow: inset 0 0 10px #00d4ff22;
-  font-size: 1rem;
-}
-.void-btn {
-  background: #9d00ff;
-  color: #e0e0e0;
-  box-shadow: 0 0 10px #9d00ff99;
-  font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-  user-select: none;
-}
-.void-btn:hover {
-  box-shadow: 0 0 30px #9d00ffcc;
-  background: #6a00cc;
-  border-color: #9d00ff;
-}
+<header>
+  <div class="logo-container" onclick="goHome()" title="THE TRUE WORLD - Home">
+    <img src="logo.png" alt="The True World Logo" class="logo-img" />
+    <h1>THE TRUE WORLD</h1>
+  </div>
+  <nav class="navbar">
+    <input type="text" placeholder="Search theories..." />
+    <button class="void-btn" onclick="showLogin()">Enter the Void</button>
+  </nav>
+</header>
 
-/* CONTAINER */
-.container {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 20px 100px 20px;
-}
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Algunas preguntas no tienen respuestas... todavía</h1>
+    <h2 id="typewriter-text"></h2>
+    <button onclick="scrollToPost()">Comparte tu teoría</button>
+    <p id="dailyAI" class="daily-theory"></p>
+  </section>
 
-/* GLASSMORPHISM CARDS */
-.glass {
-  background: rgba(10, 10, 10, 0.7);
-  border: 1px solid #00d4ff66;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #00d4ff44;
-  padding: 20px;
-  backdrop-filter: blur(12px);
-  margin-bottom: 40px;
-  color: #cfd9ffdd;
-}
+  <!-- TRENDING -->
+  <section>
+    <h2>Teorías del Día</h2>
+    <div id="featuredContainer" class="grid"></div>
+  </section>
 
-/* HERO */
-#hero {
-  text-align: center;
-  padding: 60px 20px 100px 20px;
-  position: relative;
-}
-.hero-title {
-  font-family: 'Cinzel', serif;
-  font-size: 3rem;
-  color: #9d00ff;
-  text-shadow: 0 0 15px #9d00ffbb;
-  margin-bottom: 15px;
-}
-.hero-subtitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
-  color: #00d4ffcc;
-  margin-bottom: 40px;
-  height: 36px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.cta-btn {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-#hero-symbol {
-  font-size: 80px;
-  color: #9d00ffaa;
-  margin-top: 40px;
-  user-select: none;
-  filter: drop-shadow(0 0 6px #9d00ff88);
-  transition: transform 0.3s ease;
-  cursor: default;
-}
-#hero-symbol:hover {
-  transform: rotate(15deg) scale(1.1);
-}
+  <!-- CATEGORIES -->
+  <section>
+    <h2>¿Qué te mantiene despierto?</h2>
+    <div class="categories-grid">
+      <div class="category" data-category="Paranormal">🔮 Paranormal</div>
+      <div class="category" data-category="Consciousness">🧠 Consciencias</div>
+      <div class="category" data-category="Universe">🪐 Universo</div>
+      <div class="category" data-category="Conspiracies">🗝️ Conspiraciones</div>
+      <div class="category" data-category="Science">🔬 Ciencia</div>
+      <div class="category" data-category="Philosophy">📜 Filosofías</div>
+      <div class="category" data-category="Phenomena">👁️ Fenómenos</div>
+      <div class="category" data-category="Parallel">🌌 Dimensiones</div>
+    </div>
+  </section>
 
-/* TYPEWRITER EFFECT */
-.typewriter {
-  border-right: 2px solid #00d4ffcc;
-  animation: blink-caret 0.75s step-end infinite;
-}
-@keyframes blink-caret {
-  50% {
-    border-color: transparent;
-  }
-}
+  <!-- POST THEORY -->
+  <section id="post-theory" style="display:none;">
+    <h2>Añade tu voz al silencio</h2>
+    <form id="theoryForm">
+      <input type="text" name="title" placeholder="Título de tu teoría" required>
+      <select name="category" required>
+        <option value="Paranormal">Paranormal</option>
+        <option value="Consciousness">Consciencias</option>
+        <option value="Universe">Universo</option>
+        <option value="Conspiracies">Conspiraciones</option>
+        <option value="Science">Ciencia</option>
+        <option value="Philosophy">Filosofías</option>
+        <option value="Phenomena">Fenómenos</option>
+        <option value="Parallel">Dimensiones</option>
+      </select>
+      <textarea name="content" placeholder="Tu teoría..." required></textarea>
+      <label><input type="checkbox" name="anonymous"> Publicar como anónimo</label>
+      <button type="submit">Enviar al vacío</button>
+    </form>
+  </section>
 
-/* CARD GRID */
-.card-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
-}
+  <!-- FEED -->
+  <section>
+    <h2>Deltablero de lo desconocido</h2>
+    <div id="theoryFeed" class="grid"></div>
+    <button id="loadMoreBtn">Load More</button>
+  </section>
+</main>
 
-/* THEORIES CARD */
-.card {
-  background: rgba(0, 212, 255, 0.1);
-  border-radius: 15px;
-  padding: 18px 22px;
-  box-shadow: 0 0 20px #00d4ff33;
-  color: #e0e0e0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: default;
-}
-.card:hover {
-  box-shadow: 0 0 40px #00d4ffaa;
-  transform: translateY(-5px);
-}
-.card h3 {
-  font-family: 'Cinzel', serif;
-  margin-bottom: 10px;
-  color: #9d00ff;
-}
-.card small {
-  color: #00d4ffaa;
-  font-size: 0.85rem;
-}
-.card button {
-  margin-top: 10px;
-  background: transparent;
-  color: #00d4ff;
-  border: 1px solid #00d4ff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  box-shadow: none;
-}
-.card button:hover {
-  background: #00d4ff;
-  color: #0a0a0a;
-  box-shadow: 0 0 15px #00d4ff;
-}
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="hideLogin()">&times;</span>
+    <h2>Entrar al vacío</h2>
+    <input type="text" id="username" placeholder="Username">
+    <button onclick="login()">Enter</button>
+  </div>
+</div>
 
-/* CATEGORIES GRID */
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-  gap: 20px;
-}
-.category {
-  padding: 18px;
-  border-radius: 12px;
-  background: rgba(0, 212, 255, 0.05);
-  box-shadow: 0 0 8px var(--accent);
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-align: center;
-  user-select: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.category:hover {
-  background-color: var(--accent);
-  color: #0a0a0a;
-  box-shadow: 0 0 25px var(--accent);
-}
-
-/* FORM */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-form input[type="text"],
-form select,
-form textarea {
-  background: #121212;
-  border: 1px solid #00d4ff66;
-  color: #e0e0e0;
-  padding: 12px 15px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: 'Inter', sans-serif;
-  resize: vertical;
-}
-form textarea {
-  min-height: 100px;
-}
-form label {
-  font-size: 0.9rem;
-  color: #a0a0a0;
-}
-form button {
-  align-self: flex-start;
-  width: 160px;
-}
-
-/* PROFILE */
-.profile-wrapper {
-  max-width: 900px;
-  margin: 100px auto 150px auto;
-  padding: 0 20px;
-}
-.profile-card {
-  padding: 50px 40px;
-  text-align: center;
-  border: 1px solid rgba(0, 212, 255, 0.4);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
-  border-radius: 18px;
-  position: relative;
-}
-.avatar-container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 30px auto;
-  cursor: pointer;
-}
-.avatar-large {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #00d4ff;
-  box-shadow: 0 0 40px #00d4ffcc;
-  transition: 0.3s;
-}
-.avatar-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 20px;
-  opacity: 0;
-  transition: 0.3s;
-}
-.avatar-container:hover .avatar-overlay {
-  opacity: 1;
-}
-#avatarInput {
-  display: none;
-}
-.profile-stats {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 35px;
-  color: #00d4ff;
-}
-.profile-stats div {
-  text-align: center;
-}
-.profile-stats div p {
-  margin-top: 6px;
-  font-weight: 600;
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.85);
-}
-.modal-content {
-  background: rgba(10, 10, 10, 0.9);
-  margin: 15% auto;
-  padding: 30px 25px;
-  border: 1px solid #00d4ff99;
-  width: 320px;
-  border-radius: 15px;
-  color: #e0e0e0;
-  position: relative;
-  box-shadow: 0 0 35px #00d4ffcc;
-}
-.modal-content h2 {
-  margin-bottom: 15px;
-  font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
-  color: #9d00ff;
-  text-shadow: 0 0 15px #9d00ffbb;
-}
-.modal-content input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border: 1px solid #00d4ffcc;
-  background: #121212;
-  color: #e0e0e0;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-}
-.modal-content button {
-  width: 100%;
-  background: #9d00ff;
-  color: #e0e0e0;
-  font-weight: 700;
-  padding: 12px 0;
-  border-radius: 8px;
-  border: none;
-  box-shadow: 0 0 15px #9d00ffcc;
-  transition: 0.3s ease;
-}
-.modal-content button:hover {
-  background: #6a00cc;
-  box-shadow: 0 0 30px #9d00ffcc;
-}
-.close {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 2rem;
-  font-weight: 700;
-  cursor: pointer;
-  color: #9d00ff;
-  user-select: none;
-}
-
-/* COMMENTS */
-.comments-section {
-  margin-top: 20px;
-}
-.comment {
-  background: rgba(0, 212, 255, 0.08);
-  padding: 10px 14px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  color: #e0e0e0;
-}
-.comment strong {
-  color: #00d4ff;
-}
-.comment .timestamp {
-  font-size: 0.75rem;
-  color: #66aaffaa;
-  margin-top: 2px;
-  font-style: italic;
-}
-
-/* LOAD MORE BUTTON */
-#loadMoreBtn {
-  margin: 15px auto 40px auto;
-  display: block;
-  background: #9d00ff;
-  width: 140px;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-  .navbar nav {
-    flex-wrap: wrap;
-  }
-  .navbar input[type="text"] {
-    flex-grow: 1;
-    margin-bottom: 10px;
-  }
-  .profile-stats {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-}
+<script src="main.js"></script>
+</body>
+</html>
