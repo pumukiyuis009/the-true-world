@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THE TRUE WORLD</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron&family=Cinzel&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -22,78 +22,75 @@
   </nav>
 </header>
 
-<main class="container">
-
-  <section id="hero" class="glass">
-    <h1 class="hero-title">Some questions have no answers... yet</h1>
-    <p class="hero-subtitle typewriter" id="typewriter-text"></p>
-    <button onclick="scrollToPost()" class="cta-btn">Share Your Theory</button>
-    <div id="hero-symbol" title="Mystery Symbol">&#128064;</div>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Algunas preguntas no tienen respuestas... todavía</h1>
+    <h2 id="typewriter-text"></h2>
+    <button onclick="scrollToPost()">Comparte tu teoría</button>
+    <p id="dailyAI" class="daily-theory"></p>
   </section>
 
-  <section id="daily-theory" class="glass">
-    <h2>Daily AI Theory</h2>
-    <p id="dailyAI">Loading...</p>
+  <!-- TRENDING -->
+  <section>
+    <h2>Teorías del Día</h2>
+    <div id="featuredContainer" class="grid"></div>
   </section>
 
-  <section id="featured" class="glass">
-    <h2>Trending Theories</h2>
-    <div id="featuredContainer" class="card-grid"></div>
-  </section>
-
-  <section id="categories" class="glass">
-    <h2>What keeps you awake?</h2>
+  <!-- CATEGORIES -->
+  <section>
+    <h2>¿Qué te mantiene despierto?</h2>
     <div class="categories-grid">
-      <div class="category" data-category="Paranormal" style="--accent:#00d4ff;">🔮 Paranormal & Dimensions</div>
-      <div class="category" data-category="Consciousness" style="--accent:#00ff88;">🧠 Consciousness & Mind</div>
-      <div class="category" data-category="Cosmic" style="--accent:#9d00ff;">🪐 Universe & Cosmic</div>
-      <div class="category" data-category="Conspiracies" style="--accent:#00d4ff;">🗝️ Conspiracies & Secrets</div>
-      <div class="category" data-category="Science" style="--accent:#00ff88;">🔬 Science Beyond</div>
-      <div class="category" data-category="Philosophy" style="--accent:#9d00ff;">📜 Alternative Philosophy</div>
-      <div class="category" data-category="Unexplained" style="--accent:#00d4ff;">👁️ Unexplained Phenomena</div>
-      <div class="category" data-category="Parallel" style="--accent:#00ff88;">🌌 Parallel Realities</div>
+      <div class="category" data-category="Paranormal">🔮 Paranormal</div>
+      <div class="category" data-category="Consciousness">🧠 Consciencias</div>
+      <div class="category" data-category="Universe">🪐 Universo</div>
+      <div class="category" data-category="Conspiracies">🗝️ Conspiraciones</div>
+      <div class="category" data-category="Science">🔬 Ciencia</div>
+      <div class="category" data-category="Philosophy">📜 Filosofías</div>
+      <div class="category" data-category="Phenomena">👁️ Fenómenos</div>
+      <div class="category" data-category="Parallel">🌌 Dimensiones</div>
     </div>
   </section>
 
-  <section id="post-theory" class="glass" style="display:none;">
-    <h2>Add Your Voice to the Silence</h2>
+  <!-- POST THEORY -->
+  <section id="post-theory" style="display:none;">
+    <h2>Añade tu voz al silencio</h2>
     <form id="theoryForm">
-      <input type="text" name="title" placeholder="Theory Title" maxlength="100" required />
+      <input type="text" name="title" placeholder="Título de tu teoría" required>
       <select name="category" required>
-        <option value="" disabled selected>Choose Category</option>
-        <option value="Paranormal">🔮 Paranormal & Dimensions</option>
-        <option value="Consciousness">🧠 Consciousness & Mind</option>
-        <option value="Cosmic">🪐 Universe & Cosmic</option>
-        <option value="Conspiracies">🗝️ Conspiracies & Secrets</option>
-        <option value="Science">🔬 Science Beyond</option>
-        <option value="Philosophy">📜 Alternative Philosophy</option>
-        <option value="Unexplained">👁️ Unexplained Phenomena</option>
-        <option value="Parallel">🌌 Parallel Realities</option>
+        <option value="Paranormal">Paranormal</option>
+        <option value="Consciousness">Consciencias</option>
+        <option value="Universe">Universo</option>
+        <option value="Conspiracies">Conspiraciones</option>
+        <option value="Science">Ciencia</option>
+        <option value="Philosophy">Filosofías</option>
+        <option value="Phenomena">Fenómenos</option>
+        <option value="Parallel">Dimensiones</option>
       </select>
-      <textarea name="content" placeholder="Your Theory..." rows="6" required></textarea>
-      <label><input type="checkbox" name="anonymous" /> Post anonymously</label>
-      <button type="submit">Publish Theory</button>
+      <textarea name="content" placeholder="Tu teoría..." required></textarea>
+      <label><input type="checkbox" name="anonymous"> Publicar como anónimo</label>
+      <button type="submit">Enviar al vacío</button>
     </form>
   </section>
 
-  <section id="theory-feed" class="glass">
-    <h2>Latest Theories</h2>
-    <div id="theoryFeed" class="card-grid"></div>
+  <!-- FEED -->
+  <section>
+    <h2>Deltablero de lo desconocido</h2>
+    <div id="theoryFeed" class="grid"></div>
     <button id="loadMoreBtn">Load More</button>
   </section>
-
 </main>
 
-<!-- Login Modal -->
+<!-- LOGIN MODAL -->
 <div id="loginModal" class="modal">
-  <div class="modal-content glass">
+  <div class="modal-content">
     <span class="close" onclick="hideLogin()">&times;</span>
-    <h2>Enter the Void</h2>
-    <input type="text" id="username" placeholder="Enter your username" />
+    <h2>Entrar al vacío</h2>
+    <input type="text" id="username" placeholder="Username">
     <button onclick="login()">Enter</button>
   </div>
 </div>
 
-<script src="js/main.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
