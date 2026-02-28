@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Profile | THE TRUE WORLD</title>
-<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron&family=Cinzel&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
 <canvas id="particles"></canvas>
 
-<div class="profile-wrapper">
+<header class="navbar">
+  <nav>
+    <div class="logo glow">THE TRUE WORLD</div>
+    <button onclick="logout()" class="void-btn">Log out</button>
+  </nav>
+</header>
 
-    <div class="profile-card glass">
+<main class="container profile-wrapper">
 
-        <div class="avatar-container">
-            <img id="avatarPreview" class="avatar-large">
-            <div class="avatar-overlay">Change</div>
-            <input type="file" id="avatarInput" accept="image/png, image/jpeg">
-        </div>
+  <div class="profile-card glass">
 
-        <h2 id="profileName"></h2>
-
-        <div class="profile-stats">
-            <div><span id="followers">0</span><p>Followers</p></div>
-            <div><span id="following">0</span><p>Following</p></div>
-            <div><span id="likes">0</span><p>Likes</p></div>
-            <div><span id="theoryCount">0</span><p>Theories</p></div>
-        </div>
-
+    <div class="avatar-container">
+      <img id="avatarPreview" class="avatar-large" title="Click to change your profile picture" />
+      <div class="avatar-overlay">Change</div>
+      <input type="file" id="avatarInput" accept="image/png, image/jpeg" />
     </div>
 
-</div>
+    <h2 id="profileName"></h2>
+
+    <div class="profile-stats">
+      <div><span id="followers">0</span><p>Followers</p></div>
+      <div><span id="following">0</span><p>Following</p></div>
+      <div><span id="likes">0</span><p>Likes</p></div>
+      <div><span id="theoryCount">0</span><p>Theories</p></div>
+    </div>
+
+    <section class="profile-theories">
+      <h3>Your Theories</h3>
+      <div id="userTheories" class="card-grid"></div>
+    </section>
+
+  </div>
+
+</main>
 
 <script src="js/main.js"></script>
 </body>
