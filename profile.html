@@ -10,24 +10,17 @@
 
 <canvas id="particles"></canvas>
 
-<section class="profile-container"><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile | THE TRUE WORLD</title>
-<link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-
-<canvas id="particles"></canvas>
-
 <div class="profile-wrapper">
 
-    <div class="profile-header glass">
-        <img id="avatarPreview" class="avatar-large">
+    <div class="profile-card glass">
+
+        <div class="avatar-container">
+            <img id="avatarPreview" class="avatar-large">
+            <div class="avatar-overlay">Change</div>
+            <input type="file" id="avatarInput" accept="image/png, image/jpeg">
+        </div>
+
         <h2 id="profileName"></h2>
-        <p class="bio">Seeker of hidden patterns in reality.</p>
 
         <div class="profile-stats">
             <div><span id="followers">0</span><p>Followers</p></div>
@@ -36,40 +29,9 @@
             <div><span id="theoryCount">0</span><p>Theories</p></div>
         </div>
 
-        <input type="file" id="avatarInput" accept="image/png, image/jpeg">
-    </div>
-
-    <div class="profile-theories">
-        <h3>Your Theories</h3>
-        <div id="userTheories" class="card-grid"></div>
     </div>
 
 </div>
-
-<script src="js/main.js"></script>
-</body>
-</html>
-
-<div class="profile-card glass">
-
-    <div class="avatar-section">
-        <img id="avatarPreview" class="avatar" src="" alt="Profile Picture">
-        <input type="file" id="avatarInput" accept="image/png, image/jpeg">
-        <p class="policy">Profile images must not contain nudity or explicit content.</p>
-    </div>
-
-    <h2 id="profileName"></h2>
-
-    <div class="stats">
-        <div><span id="followers">0</span><p>Followers</p></div>
-        <div><span id="following">0</span><p>Following</p></div>
-        <div><span id="likes">0</span><p>Likes</p></div>
-        <div><span id="theoryCount">0</span><p>Theories</p></div>
-    </div>
-
-</div>
-
-</section>
 
 <script src="js/main.js"></script>
 </body>
